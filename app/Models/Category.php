@@ -1,0 +1,22 @@
+<?php
+
+namespace App\Models;
+
+// use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+
+class Category extends Model
+{
+    protected $fillable = [
+        'name',
+        'description',
+    ];
+
+    public function reports()
+    {
+        return $this->hasMany(Report::class);
+    }
+}
