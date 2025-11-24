@@ -2,13 +2,9 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
 
-class Report extends Model 
+class Report extends Model
 {
     protected $fillable = [
         'user_id',
@@ -26,6 +22,11 @@ class Report extends Model
         'longtitude',
     ];
 
+    public function media()
+    {
+        return $this->hasMany(ReportMedia::class);
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -36,17 +37,12 @@ class Report extends Model
         return $this->belongsTo(Category::class);
     }
 
-    public function media()
-    {
-        return $this->hasMany(ReportMedia::class);
-    }
-
     public function comment()
     {
         return $this->hasMany(ReportComment::class);
     }
 
-    public function statusLog()
+    public function status()
     {
         return $this->hasMany(ReportStatusLog::class);
     }
